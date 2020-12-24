@@ -37,13 +37,13 @@ public class EmployeeController {
         return ResponseEntity.ok().body(employeeService.getEmployeeById(employeeId));
     }
 
-    @PostMapping("/employee")
+    @PostMapping("/employees")
     public Employee createEmployee(@Valid @RequestBody Employee employee) {
 
         return employeeService.createEmployee(employee);
     }
 
-    @PutMapping("/employee/{id}")
+    @PutMapping("/employees/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Integer employeeId,
                                                    @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
 
@@ -51,7 +51,7 @@ public class EmployeeController {
     }
 
 
-    @DeleteMapping("/employee/{id}")
+    @DeleteMapping("/employees/{id}")
     public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Integer employeeId) throws ResourceNotFoundException {
         employeeService.deleteEmployee(employeeId);
         Map<String, Boolean> respons = new HashMap<>();

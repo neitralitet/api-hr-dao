@@ -28,26 +28,26 @@ public class DepartmentController {
         return departmentService.getAllDepartment();
     }
 
-    @GetMapping("/department/{id}")
+    @GetMapping("/departments/{id}")
     public ResponseEntity<Department> getDepartmentById(@PathVariable(value = "id") Integer departmentId) throws ResourceNotFoundException {
 
         return ResponseEntity.ok().body( departmentService.getDepartmentById(departmentId));
     }
 
-    @PostMapping("/department")
+    @PostMapping("/departments")
     public Department createDepartment(@RequestBody Department department) {
 
         return departmentService.createDepartment(department);
     }
 
-    @PutMapping("/department/{id}")
+    @PutMapping("/departments/{id}")
     public ResponseEntity<Department> updateDepartment(@PathVariable(value = "id") Integer departmentId,
                                                        @Valid @RequestBody Department departmentDetails) throws ResourceNotFoundException {
 
         return ResponseEntity.ok( departmentService.updateDepartment(departmentId,departmentDetails));
     }
 
-    @DeleteMapping("/department/{id}")
+    @DeleteMapping("/departments/{id}")
     public Map<String, Boolean> deleteDepartment(@PathVariable(value = "id") Integer departmentId) throws ResourceNotFoundException {
         departmentService.deleteDepartment(departmentId);
         Map<String, Boolean> respons = new HashMap<>();
